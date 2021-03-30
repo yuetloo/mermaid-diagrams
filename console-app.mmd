@@ -1,0 +1,25 @@
+graph TD
+    A[Page1: DAO list] -->|Select DAO| B(DAO detail page w/ proposal list)
+    B -->|new proposal| C[New Proposal Page]
+    B -->|view proposal| E[Proposal Detail Page]
+
+    E --> H{Have scheduled Actions?} 
+    H -->|Yes| G[Page with action buttons]
+    H -->|No| I[Page without buttons]
+    
+    G -->|execute| executed
+    G -->|challenge| challenged
+    G -->|veto| vetoed
+
+    
+    C --> K[add action]
+    K -->|input contract address + ABI| F[Action lists]
+
+    L{Add more actions} -->|Yes| K
+    L -->|No| J[Schedule proposal]
+
+    F --> L
+
+    F-.-
+    P[- each action has input fields <br/>- ABI can have multple functions<br/>-can sort/delete actions in list<br/>- can select actions to add to list]
+    style P fill:#ffe,stroke:#fddd,stroke-width:2px,color:#111
